@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import ApiMovie from './ApiMovie';
 import './App.css';
+import {useEffect, useState} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [movieList, setMovieList ] = useState([])
+
+  useEffect(() => {
+    const loadMovies = async () => {
+      let moviesList = await ApiMovie.getHomesMovies();
+      console.log(moviesList);
+    }
+    loadMovies();
+    
+  }, [])
+
+  return  <div className="App">HELLO WORLD</div>
 }
 
 export default App;
