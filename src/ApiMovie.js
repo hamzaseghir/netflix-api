@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = 'https://api.themoviedb.org/3/';
 
@@ -7,29 +8,29 @@ const fetchMovies = async(endpoint) => {
     ).then((response) => response.json())
 }
 
-export default {
+export default  {
     getHomesMovies: async() => {
         return  [
             {
-                slug: "top-rated",
-                title: "Mieux notés",
+                slug: "top-rated-movies",
+                title: "Films les mieux notés",
                 items: await fetchMovies("movie/top_rated"),
             },
             {
-                slug: "popular",
-                title: "Populaires",
+                slug: "popular-movies",
+                title: "Films populaires",
                 items: await fetchMovies("movie/popular"),
             },
             {
-                slug: "latest",
-                title: "Dernières sorties",
-                items: await fetchMovies("movie/latest"),
+                slug: "upcoming",
+                title: "Prochaines sorties film",
+                items: await fetchMovies("movie/upcoming"),
             },
             {
-                slug: "upcoming",
-                title: "Prochaines sorties",
-                items: await fetchMovies("movie/upcoming"),
-            }
+                slug: "top-rated-shows",
+                title: "Séries les mieux notés",
+                items: await fetchMovies("tv/top_rated"),
+            },
         ]
-    }
+    },
 }
